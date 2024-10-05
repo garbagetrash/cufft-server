@@ -1,0 +1,12 @@
+[package]
+name = "cufft-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = "1"
+bytemuck = "1"
+num-complex = { version = "0.4", features = ["bytemuck"] }
+
+[build-dependencies]
+bindgen = "0.70"
