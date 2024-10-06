@@ -23,8 +23,11 @@ the CUFFT batch FFT on all data in the struct.
 let mut a2d = Array2D::new(nfft);
 a2d.push_array(&data1).unwrap();
 a2d.push_array(&data2).unwrap();
+a2d.push_array(&data3).unwrap();
+a2d.pop_array().unwrap();
 a2d.fft().unwrap();
-let output: Vec<&[Complex<f32>]> = a2d.get_all();
+let output1: &[Complex<f32>] = a2d.get(1).unwrap(); // gets reference to transform of data2
+let output2: Vec<&[Complex<f32>]> = a2d.get_all();  // gets references to all arrays in a Vec
 ```
 
 Build
