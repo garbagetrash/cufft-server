@@ -4,9 +4,12 @@ use std::path::PathBuf;
 fn main() {
     // Tell cargo to look for shared libraries in the specified directory
     println!("cargo:rustc-link-search=build");
+    println!("cargo:rustc-link-search=/usr/local/cuda/lib64");
 
     // Tell cargo to tell rustc to link the library
     println!("cargo:rustc-link-lib=cufft_server");
+    println!("cargo:rustc-link-lib=cudart");
+    println!("cargo:rustc-link-lib=cufft");
 
     // The bindgen::Builder is the main entrypoint to bindgen, and lets you
     // build up options for the resulting bindings.

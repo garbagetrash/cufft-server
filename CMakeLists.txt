@@ -10,10 +10,11 @@ enable_language(CUDA)
 
 find_package(CUDAToolkit REQUIRED)
 
-add_library(cufft_server SHARED
+add_library(cufft_server STATIC
     src/cufft_server.cu
 )
 target_include_directories(cufft_server PUBLIC ${CMAKE_CUDA_TOOLKIT_INCLUDE_DIRECTORIES})
 target_include_directories(cufft_server PUBLIC include)
 set_target_properties(cufft_server PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
-target_link_libraries(cufft_server PRIVATE CUDA::cufft CUDA::cudart m)
+set_target_properties(cufft_server PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON)
+target_link_libraries(cufft_server PUBLIC CUDA::cufft CUDA::cudart m)
