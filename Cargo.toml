@@ -10,3 +10,4 @@ num-complex = { version = "0.4", features = ["bytemuck"] }
 
 [build-dependencies]
 bindgen = "0.70"
+cmake = "0.1"

@@ -18,3 +18,5 @@ target_include_directories(cufft_server PUBLIC include)
 set_target_properties(cufft_server PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 set_target_properties(cufft_server PROPERTIES CUDA_RESOLVE_DEVICE_SYMBOLS ON)
 target_link_libraries(cufft_server PUBLIC CUDA::cufft CUDA::cudart m)
+
+install(TARGETS cufft_server DESTINATION .)

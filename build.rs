@@ -2,12 +2,15 @@ use std::env;
 use std::path::PathBuf;
 
 fn main() {
+    // Build the CUDA C library
+    let dst = cmake::build("libcufft_server");
+
     // Tell cargo to look for shared libraries in the specified directory
-    println!("cargo:rustc-link-search=build");
+    println!("cargo:rustc-link-search=native={}", dst.display());
     println!("cargo:rustc-link-search=/usr/local/cuda/lib64");
 
     // Tell cargo to tell rustc to link the library
-    println!("cargo:rustc-link-lib=cufft_server");
+    println!("cargo:rustc-link-lib=static=cufft_server");
     println!("cargo:rustc-link-lib=cudart");
     println!("cargo:rustc-link-lib=cufft");
 

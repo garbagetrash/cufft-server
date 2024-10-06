@@ -1,1 +1,1 @@
-#include "include/cufft_server.h"
+#include "libcufft_server/include/cufft_server.h"

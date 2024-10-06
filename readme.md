@@ -37,12 +37,10 @@ Requires CMake 3.28+, CUDA with support for compute 7.5, and gcc 12. This is
 basically just tuned exactly to my system, since that's all I care about right
 now.
 
-Build is a two step process, first compile the CUDA C code, then the rust
-bindings and interface.
+Build is straightforward using the cmake crate. Basically just like normal:
 
 ```
-$ mkdir build && cd build && cmake .. && make
-$ cd .. && cargo build
+$ cargo build
 ```
 
 Test
