@@ -22,8 +22,8 @@ void c2c_fft_batch(float *h_data, int nfft, int batch)
     cufftResult r = cufftPlan1d(&plan, nfft, CUFFT_C2C, batch);
 
     // Create device arrays
-    cufftComplex *d_data = nullptr;
-    cudaMalloc((void **)d_data, sizeof(cufftComplex) * nfft * batch);
+    cufftComplex *d_data;
+    cudaMalloc((void **)&d_data, sizeof(cufftComplex) * nfft * batch);
     cudaMemcpy(d_data, h_data, 2 * sizeof(float) * nfft * batch, cudaMemcpyHostToDevice);
     cufftExecC2C(plan, d_data, d_data, CUFFT_FORWARD);
     cudaMemcpy(h_data, d_data, 2 * sizeof(float) * nfft * batch, cudaMemcpyDeviceToHost);
