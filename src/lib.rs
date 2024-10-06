@@ -21,7 +21,7 @@ mod tests {
     use super::*;
 
     const nfft: usize = 8;
-    const gold: [Complex<f32>; 8] = [
+    const gold: [Complex<f32>; nfft] = [
         Complex::new(28.0, -28.0),
         Complex::new(5.65685425, 13.65685425),
         Complex::new(0.0, 8.0),
