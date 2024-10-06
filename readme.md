@@ -7,12 +7,25 @@ library.
 Usage
 -----
 
-For now there exists a single function with signature:
+### fft_batch_gpu
 
 `fft_batch_gpu<const NFFT: usize>(data: &mut [[Complex<f32>; NFFT]]) -> Result<()>`
 
 This runs CUFFT on a batch of arrays in `data` each of size `NFFT`. The FFTs
 are performed in place, and the return is `Ok(())` on success.
+
+### Array2D
+
+Provides an interface using a struct that stores 2d array of data and can run
+the CUFFT batch FFT on all data in the struct.
+
+```rust
+let mut a2d = Array2D::new(nfft);
+a2d.push_array(&data1).unwrap();
+a2d.push_array(&data2).unwrap();
+a2d.fft().unwrap();
+let output: Vec<&[Complex<f32>]> = a2d.get_all();
+```
 
 Build
 -----
