@@ -3,7 +3,7 @@ use std::path::PathBuf;
 
 fn main() {
     // Tell cargo to look for shared libraries in the specified directory
-    println!("cargo:rustc-link-search=/home/styty/git/cufft-server/build");
+    println!("cargo:rustc-link-search=build");
 
     // Tell cargo to tell rustc to link the library
     println!("cargo:rustc-link-lib=cufft_server");
